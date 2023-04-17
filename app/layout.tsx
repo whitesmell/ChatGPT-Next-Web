@@ -5,7 +5,6 @@ import "./styles/highlight.scss";
 import { getBuildConfig } from "./config/build";
 
 import { APP_TITLE, APP_SUB_TITLE } from "./constant";
-import { Analytics } from '@vercel/analytics/react';
 
 const buildConfig = getBuildConfig();
 
@@ -24,6 +23,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const getAnalyticsTag = () => {
+    return {
+      __html: `
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?729788bc71665ee31fd99cb5e3071345";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();`,
+    }
+  }
+
   return (
     <html lang="en">
       <head>
@@ -45,10 +57,10 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
         <script src="/serviceWorkerRegister.js" defer></script>
+        <script dangerouslySetInnerHTML={getAnalyticsTag()}/>
       </head>
       <body>
         {children}
-        <Analytics />
       </body>
     </html>
   );

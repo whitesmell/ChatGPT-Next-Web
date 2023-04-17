@@ -8,7 +8,6 @@ specifiers:
   '@types/react-dom': ^18.0.11
   '@types/react-katex': ^3.0.0
   '@types/spark-md5': ^3.0.2
-  '@vercel/analytics': ^0.1.11
   cross-env: ^7.0.3
   emoji-picker-react: ^4.4.7
   eslint: ^8.36.0
@@ -40,7 +39,6 @@ specifiers:
 dependencies:
   '@hello-pangea/dnd': 16.2.0_jlpdlnmgz6kfq77dq7ypembf5a
   '@svgr/webpack': 6.5.1
-  '@vercel/analytics': 0.1.11_react@18.2.0
   emoji-picker-react: 4.4.8_react@18.2.0
   eventsource-parser: 0.1.0
   fuse.js: 6.6.2
@@ -1906,14 +1904,6 @@ packages:
       '@typescript-eslint/types': 5.58.0
       eslint-visitor-keys: 3.4.0
     dev: true
-
-  /@vercel/analytics/0.1.11_react@18.2.0:
-    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
-    peerDependencies:
-      react: ^16.8||^17||^18
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
