@@ -6,6 +6,9 @@ import IT from "./it";
 import TR from "./tr";
 import JP from "./jp";
 import DE from "./de";
+import VI from "./vi";
+import RU from "./ru";
+import CS from "./cs";
 
 export type { LocaleType } from "./cn";
 
@@ -18,10 +21,14 @@ export const AllLangs = [
   "tr",
   "jp",
   "de",
+  "vi",
+  "ru",
+  "cs",
 ] as const;
-type Lang = (typeof AllLangs)[number];
+export type Lang = (typeof AllLangs)[number];
 
 const LANG_KEY = "lang";
+const DEFAULT_LANG = "en";
 
 function getItem(key: string) {
   try {
@@ -41,7 +48,8 @@ function getLanguage() {
   try {
     return navigator.language.toLowerCase();
   } catch {
-    return "cn";
+    console.log("[Lang] failed to detect user lang.");
+    return DEFAULT_LANG;
   }
 }
 
@@ -60,7 +68,7 @@ export function getLang(): Lang {
     }
   }
 
-  return "en";
+  return DEFAULT_LANG;
 }
 
 export function changeLang(lang: Lang) {
@@ -77,4 +85,7 @@ export default {
   tr: TR,
   jp: JP,
   de: DE,
+  vi: VI,
+  ru: RU,
+  cs: CS,
 }[getLang()] as typeof CN;
