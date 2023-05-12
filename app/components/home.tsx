@@ -25,7 +25,7 @@ import { SideBar } from "./sidebar";
 import { useAppConfig } from "../store/config";
 import { useMaskStore } from "../store/mask";
 
-import { APP_TITLE, APP_SUB_TITLE } from "../constant";
+
 
 export function Loading(props: { noLogo?: boolean }) {
   return (
@@ -111,20 +111,6 @@ function Screen() {
       }
     >
       <SideBar className={isHome ? styles["sidebar-show"] : ""} />
-      <div
-        className={styles.sidebar + ` ${showSideBar && styles["sidebar-show"]}`}
-      >
-        <div className={styles["sidebar-header"]}>
-          <div className={styles["sidebar-title"]}>
-            { APP_TITLE }
-          </div>
-          <div className={styles["sidebar-sub-title"]}>
-            { APP_SUB_TITLE }
-          </div>
-          <div className={styles["sidebar-logo"]}>
-            <ChatGptIcon />
-          </div>
-        </div>
 
       <div className={styles["window-content"]} id={SlotID.AppBody}>
         <Routes>
@@ -134,70 +120,6 @@ function Screen() {
           <Route path={Path.Chat} element={<Chat />} />
           <Route path={Path.Settings} element={<Settings />} />
         </Routes>
-        <div
-          className={styles["sidebar-body"]}
-          onClick={() => {
-            setOpenSettings(false);
-            setShowSideBar(false);
-          }}
-        >
-          <ChatList />
-        </div>
-
-        <div className={styles["sidebar-tail"]}>
-          <div className={styles["sidebar-actions"]}>
-            <div className={styles["sidebar-action"] + " " + styles.mobile}>
-              <IconButton
-                icon={<CloseIcon />}
-                onClick={chatStore.deleteSession}
-              />
-            </div>
-            <div className={styles["sidebar-action"]}>
-              <IconButton
-                icon={<SettingsIcon />}
-                onClick={() => {
-                  setOpenSettings(true);
-                  setShowSideBar(false);
-                }}
-                shadow
-              />
-            </div>
-            
-          </div>
-          <div>
-            <IconButton
-              icon={<AddIcon />}
-              text={Locale.Home.NewChat}
-              onClick={() => {
-                createNewSession();
-                setShowSideBar(false);
-              }}
-              shadow
-            />
-          </div>
-        </div>
-
-        <div
-          className={styles["sidebar-drag"]}
-          onMouseDown={(e) => onDragMouseDown(e as any)}
-        ></div>
-      </div>
-
-      <div className={styles["window-content"]}>
-        {openSettings ? (
-          <Settings
-            closeSettings={() => {
-              setOpenSettings(false);
-              setShowSideBar(true);
-            }}
-          />
-        ) : (
-          <Chat
-            key="chat"
-            showSideBar={() => setShowSideBar(true)}
-            sideBarShowing={showSideBar}
-          />
-        )}
       </div>
     </div>
   );
